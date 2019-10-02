@@ -1052,5 +1052,6 @@ class StockDataFrame(pd.DataFrame):
 
             if index_column in value.columns:
                 value.set_index(index_column, inplace=True)
+            value = value.loc[:, ~value.columns.duplicated()]
             value = StockDataFrame(value)
         return value
